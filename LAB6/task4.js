@@ -1,0 +1,42 @@
+function getMostFuelEfficientCars(cars, brand) {
+  const allUnder6 = cars.every(car => car.fuelConsumption < 6);
+
+  if (!allUnder6) {
+    return [];
+  }
+  const brandCars = cars.filter(car => car.brand === brand);
+  
+  if (brandCars.length === 0) {
+    return [];
+  }
+  const minConsumption = Math.min(...brandCars.map(car => car.fuelConsumption));
+
+  return brandCars.filter(car => car.fuelConsumption === minConsumption);
+}
+
+const cars = [
+  { brand: 'Toyota', model: 'Corolla', fuelConsumption: 5.2 },
+  { brand: 'Honda', model: 'Civic', fuelConsumption: 5.9 },
+  { brand: 'Toyota', model: 'Camry', fuelConsumption: 5.5 },
+//   { brand: 'Ford', model: 'Focus', fuelConsumption: 6.1 },
+  { brand: 'Honda', model: 'Accord', fuelConsumption: 5.8 },
+  { brand: 'Audi', model: 'A3', fuelConsumption: 5.4 },
+  { brand: 'Audi', model: 'Q5', fuelConsumption: 5.7 },
+  { brand: 'Dodge', model: 'Charger', fuelConsumption: 5.8 },
+  { brand: 'Dodge', model: 'Durango', fuelConsumption: 5.6 },
+];
+
+console.log('Toyota:', getMostFuelEfficientCars(cars, 'Toyota'));
+console.log('Honda:', getMostFuelEfficientCars(cars, 'Honda'));
+console.log('Audi:', getMostFuelEfficientCars(cars, 'Audi'));
+console.log('Dodge:', getMostFuelEfficientCars(cars, 'Dodge'));
+console.log('Ford:', getMostFuelEfficientCars(cars, 'Ford'));
+
+module.exports = getMostFuelEfficientCars;
+
+
+
+//  ／l、             
+// （ﾟ､ ｡ ７         
+//   l  ~ヽ       
+//   じしf_,)ノ
